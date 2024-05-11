@@ -1,9 +1,9 @@
 import { SETPAGE } from "./types";
 
-export const setData = (page,count) => {
+export const setData = (num,count) => {
     return {
       type: SETPAGE,
-      page: page,
-      count:count
+      count:count,
+      num:num
     };
   };

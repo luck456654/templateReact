@@ -1,17 +1,14 @@
 import { SETPAGE } from "./types"
 const initialState = {
-    page:1,
+    num:10,
     count:1
 }
 export const reducer = (state = initialState, action) => {
-    function changecon(page){
-         state.page=page 
-       }
-    switch (action.type) {
+     switch (action.type) {
         case SETPAGE: {
             return {
               ...state,
-              page:  changecon(action.page),
+              num:  action.num,
               count: action.count 
             };
             

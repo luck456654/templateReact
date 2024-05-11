@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import axios from 'axios';
 
 function Home() {
-  
-  const [con, setCon] = useState(1);
+   
   const storeData = useSelector(state => state)
+  const count = useSelector(state => state.count)
+  const data = useSelector(state => state.data)
   const dispatch = useDispatch()
 
   const [dataapi, setDataAPI] = useState();
@@ -22,19 +23,16 @@ function Home() {
   }
 
 
-function changeCon(){
-  dispatch(setData(con)) 
-setCon((storeData?.setpage.page)+1)
-
+function changecount(){
+  dispatch(setData(storeData?.setpage.num+5, storeData?.setpage.count+1)) 
 }
+
   return (
     <div>
       <h2>Домашняя страница</h2>
-      <p>В сторе сейчас-{con}</p>
-      <button onClick={changeCon}>Прибавить 1 к переменной в стейте и показать значение </button>
-      <button onClick={loadContent}>Загрузить данные из API </button>
-      <p>В сторе сейчас-{con}</p>
-      <p>{dataapi?.data.fact}</p>
+      <button onClick={changecount}>Прибавить и показать</button>
+      <p>В сторе сейчас num = {storeData?.setpage.num} и count = {storeData?.setpage.count} </p>
+      <button onClick={loadContent}>Загрузить данные из API и вывести их в консоль</button>      
     </div>
   );
 }
